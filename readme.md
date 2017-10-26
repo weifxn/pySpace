@@ -1,5 +1,4 @@
 # pySpace
-## ~
 **pySpace** is a simple python grid game.
 
 
