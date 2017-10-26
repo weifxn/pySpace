@@ -104,7 +104,6 @@ def checkFuel(fuel,xaxis,yaxis,move,halfLength,stage,tut):
             jump = tut
         print(' Move', end='')
         move = input(': ')
-        print('\e[8;50;;100t')
     else:
         os.system('cls' if os.name == 'nt' else 'clear')
 
