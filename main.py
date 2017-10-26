@@ -80,15 +80,16 @@ while exitGame > 1:
         while menu > 1:
             tut = 0
             print(' Fuel:', fuel, '\n Gold:', int(score), )
-            x = input('\n\n\t[ Stage {Stage} ]\n\n\n{Start}\n\n 2. Buy fuel\n\n 3. Upgrades\n\n 4. Quit\n\n Select: '.format(Start = orContinue,Stage=stage))
+            print('\n\n',end=' ')
+            x = input(' [ Stage {Stage} ]\n\n\n{Start}\n\n 2. Buy fuel\n\n 3. Upgrades\n\n 4. Quit\n\n Select: '.format(Start = orContinue,Stage=stage))
             if x == '0':
                 os.system('cls' if os.name == 'nt' else 'clear')
                 stage -= 1
                 menu = 1
             if x == '3':
                 os.system('cls' if os.name == 'nt' else 'clear')
-                print('\n\n Upgrades:\n\n\n 1. Moves consume 10% less fuel [199 Gold]\n')
-                bonus = int(input(' 2. Moves consume 20% less fuel\t[399 Gold] \n\n 3. Moves consume 40% less fuel\t[799 Gold]\n\n Select (0 to return): '))
+                print('\n\n Upgrades:\n\n\n 1. 10% less fuel\n [199 Gold]\n')
+                bonus = int(input(' 2. 20% less fuel\n [399 Gold] \n\n 3. 40% less fuel\n [799 Gold]\n\n Select number\n (0 to return): '))
                 if bonus == 1:
                     if score > 198:
                         score -= 199

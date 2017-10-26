@@ -102,10 +102,12 @@ def checkFuel(fuel,xaxis,yaxis,move,halfLength,stage,tut):
             jump = ''
         else:
             jump = tut
-        print(' Move',jump, end='')
+        print(' Move', end='')
         move = input(': ')
+        print('\e[8;50;;100t')
     else:
         os.system('cls' if os.name == 'nt' else 'clear')
+
         print('\n\n\n\n\n\n Out of fuel\n\n You wander in deep space of stage',stage,
                        '\n\n\n\n\n\n c - try again\n z - quit ')
         choice = input(' Select: ')
@@ -116,8 +118,8 @@ def buyFuel(fuel,score,x):
     if x == '2':
         os.system('cls' if os.name == 'nt' else 'clear')
         print(' Fuel:', fuel, '\n Gold:', int(score), )
-        print('\n\n\n\n\n\n You can afford', score*2, 'fuel.')
-        addFuel = int(input('\n\n 2 fuel for 1 gold.\n\n Fuel amount(0 to return): '))
+        print('\n\n 2 fuel per gold.\n\n Max fuel:', int(score*2))
+        addFuel = int(input('\n\n Fuel amount\n (0 to return): '))
         if addFuel == '':
             fuel = fuel
         else:
@@ -136,7 +138,7 @@ def tutorial(tut,stage,l):
     if stage == 0 and tut == 0:
         print()
         print(' You can use WASD to control the ship.')
-        print(' Type \'ww\' to move forward')
+        print(' Type \'ww\' to move forward twice.')
 
     elif stage == 0 and tut == 1:
         print()
