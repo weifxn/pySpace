@@ -45,13 +45,63 @@ bonus = 0
 fBonus = 0
 guide = '.'
 p= 0
+save = ['','','']
+stat = ['','','']
+file = open('save.txt','r+')
+for snum in range(3):
+    save[snum] = file.readline()
+
+for jump in range(3):
+    stat[jump] = file.readline()
+
+
+
 
 while exitGame > 1:
+    os.system('cls' if os.name == 'nt' else 'clear')
+    userSel = input(' 1. New game \n 2. Load game\n 3. Quit game\n : ')
     exit = 3
     score = 100
     fuel = 200
     orContinue = " 0. How to Play\n\n 1. Start "
     stage = 0
+    if userSel == '3':
+        exit = 1
+        exitGame = 1
+        os.system('cls' if os.name == 'nt' else 'clear')
+    elif userSel == '2' or userSel == '1':
+        os.system('cls' if os.name == 'nt' else 'clear')
+        saveNum = int(input(' [Saves] \n\n 1. {save1}\n 2. {save2}\n 3. {save3}\n : '.format(save1=save[0],save2=save[1],save3=save[2])))
+        if save[saveNum-1] == 'Empty\n': 
+            username = input('Enter name: ')
+            username += '\n'
+            file.seek(0)
+            file.truncate()
+            for userNum in range(3):
+                if userNum == (saveNum-1):
+                    file.write(username)
+                else:
+                    file.write(save[userNum])
+
+            for statsNum in range(3):
+                file.write(stat[statsNum])
+
+
+
+            
+        else:
+            #fuel gold stage
+
+            
+
+            statList = stat[saveNum-1].split(' ')
+            fuel = int(statList[0])
+            score = int(statList[1])
+            stage = int(statList[2])
+            stage -= 1
+
+
+    file.close()
 
     while exit > 1:
         stage +=1
@@ -122,6 +172,32 @@ while exitGame > 1:
                 fuel = grid.buyFuel(fuel,score,x)
                 value = fuel - temp
                 score -= value / 2
+
+            file = open('save.txt','r+')
+            for snum in range(3):
+                save[snum] = file.readline()
+
+            for jump in range(3):
+                stat[jump] = file.readline()
+
+            file.seek(0)
+            file.truncate()
+
+            for userNum in range(3):
+                file.write(save[userNum])
+
+            for statsNum in range(3):
+                if statsNum == (saveNum-1):
+                    stats = "{f} {s} {sg}\n".format(f=fuel,s=int(score),sg=stage)
+                    file.write(stats)
+                else:
+                    file.write(stat[statsNum])
+                print()
+            file.close()
+
+
+
+
 
             os.system('cls' if os.name == 'nt' else 'clear')
 
