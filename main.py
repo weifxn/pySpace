@@ -47,12 +47,7 @@ guide = '.'
 p= 0
 save = ['','','']
 stat = ['','','']
-file = open('save.txt','r+')
-for snum in range(3):
-    save[snum] = file.readline()
 
-for jump in range(3):
-    stat[jump] = file.readline()
 
 
 
@@ -71,34 +66,70 @@ while exitGame > 1:
         os.system('cls' if os.name == 'nt' else 'clear')
     elif userSel == '2' or userSel == '1':
         os.system('cls' if os.name == 'nt' else 'clear')
-        saveNum = int(input(' [Saves] \n\n 1. {save1}\n 2. {save2}\n 3. {save3}\n : '.format(save1=save[0],save2=save[1],save3=save[2])))
-        if save[saveNum-1] == 'Empty\n': 
-            username = input('Enter name: ')
-            username += '\n'
-            file.seek(0)
-            file.truncate()
-            for userNum in range(3):
-                if userNum == (saveNum-1):
-                    file.write(username)
-                else:
-                    file.write(save[userNum])
+        leaveSave = 2
+        while leaveSave > 1:
+            file = open('save.txt','r+')
+            for snum in range(3):
+                save[snum] = file.readline()
 
-            for statsNum in range(3):
-                file.write(stat[statsNum])
+            for jump in range(3):
+                stat[jump] = file.readline()
+            leaveSave = 1
+            saveNum = int(input(' [Saves] \n\n 1. {save1}\n 2. {save2}\n 3. {save3}\n (type 4 to delete save): '.format(save1=save[0],save2=save[1],save3=save[2])))
+            if saveNum > 3:
+                file.close()
 
+                file = open('save.txt','r+')
+                for snum in range(3):
+                    save[snum] = file.readline()
 
+                for jump in range(3):
+                    stat[jump] = file.readline()
+                delSave = int(input(' Select a save to delete: '))
+                file.seek(0)
+                file.truncate()
 
+                for userNum in range(3):
+                    if userNum == (delSave-1):
+                        file.write('Empty\n')
+                    else:
+                        file.write(save[userNum])
+
+                for statsNum in range(3):
+                    if statsNum == (delSave-1):
+                        file.write('200 100 0\n')
+                    else:
+                        file.write(stat[statsNum])
+                file.close()
+                os.system('cls' if os.name == 'nt' else 'clear')
+                leaveSave = 2
             
-        else:
-            #fuel gold stage
+            elif save[saveNum-1] == 'Empty\n': 
+                username = input(' Enter name: ')
+                username += '\n'
+                file.seek(0)
+                file.truncate()
+                for userNum in range(3):
+                    if userNum == (saveNum-1):
+                        file.write(username)
+                    else:
+                        file.write(save[userNum])
 
-            
+                for statsNum in range(3):
+                    file.write(stat[statsNum])
+               
 
-            statList = stat[saveNum-1].split(' ')
-            fuel = int(statList[0])
-            score = int(statList[1])
-            stage = int(statList[2])
-            stage -= 1
+
+            else:
+                #fuel gold stage
+
+                
+
+                statList = stat[saveNum-1].split(' ')
+                fuel = int(statList[0])
+                score = int(statList[1])
+                stage = int(statList[2])
+                stage -= 1
 
 
     file.close()
@@ -168,6 +199,8 @@ while exitGame > 1:
             elif x == '4':
                 menu = 1
                 move = 'z'
+            elif x == '5':
+                menu = 1
             else:
                 fuel = grid.buyFuel(fuel,score,x)
                 value = fuel - temp
