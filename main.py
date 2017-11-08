@@ -24,10 +24,15 @@
     - removed skills
     - fix: horizontal length random
     - do: increase stars at higher stage
+    - added autosave (at menu)
+    - added save and load page
+    - added delete save (number 4)
+    - do: easygui
 
 
 
 '''
+
 
 import grid
 import os
@@ -75,7 +80,7 @@ while exitGame > 1:
             for jump in range(3):
                 stat[jump] = file.readline()
             leaveSave = 1
-            saveNum = int(input(' [Saves] \n\n 1. {save1}\n 2. {save2}\n 3. {save3}\n (type 4 to delete save): '.format(save1=save[0],save2=save[1],save3=save[2])))
+            saveNum = int(input(' [Saves] \n\n Choose an empty save to start a new game: \n 1. {save1}\n 2. {save2}\n 3. {save3}\n (type 4 to delete save): '.format(save1=save[0],save2=save[1],save3=save[2])))
             if saveNum > 3:
                 file.close()
 
