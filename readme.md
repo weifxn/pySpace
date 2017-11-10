@@ -7,7 +7,7 @@ You can [download it here](https://github.com/weifan23/pySpace/archive/master.zi
 You need to download [Python 3.6](https://www.python.org/downloads/) to run this game.
 
 	
-	$ python3 main.py
+	$ python3 pySpace.py
 
 
 ![game](https://i.imgur.com/alljbar.png)
