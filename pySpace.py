@@ -79,49 +79,50 @@ while exitGame > 1:
 
             for jump in range(3):
                 stat[jump] = file.readline() # load save datas
-            leaveSave = 1
+
+            leaveSave = 1 # exit loop
             saveNum = int(input(' [Saves] \n\n Choose an empty save to start a new game: \n 1. {save1}\n 2. {save2}\n 3. {save3}\n (type 4 to delete save): '.format(save1=save[0],save2=save[1],save3=save[2])))
+
             if saveNum > 3: # user choose to delete saves
                 delSave = int(input(' Select a save to delete: '))
-                file.seek(0)
-                file.truncate()
+                file.seek(0) # go to start
+                file.truncate() # remove everything
 
                 for userNum in range(3):
-                    if userNum == (delSave-1):
+                    if userNum == (delSave-1): # change selected name to empty
                         file.write('Empty\n')
                     else:
-                        file.write(save[userNum])
+                        file.write(save[userNum]) # rest of the names remain
 
                 for statsNum in range(3):
-                    if statsNum == (delSave-1):
-                        file.write('200 100 0\n')
+                    if statsNum == (delSave-1): 
+                        file.write('200 100 0\n') # reset empty to default stats
                     else:
-                        file.write(stat[statsNum])
+                        file.write(stat[statsNum]) # rest of the stats remain
+
                 file.close()
                 os.system('cls' if os.name == 'nt' else 'clear')
-                leaveSave = 2
+                leaveSave = 2 # stay in loop
             
-            elif save[saveNum-1] == 'Empty\n': 
-                username = input(' Enter name: ')
+            elif save[saveNum-1] == 'Empty\n': # if user select empty save 
+                username = input(' Enter name: ') 
                 username += '\n'
                 file.seek(0)
                 file.truncate()
+
                 for userNum in range(3):
                     if userNum == (saveNum-1):
-                        file.write(username)
+                        file.write(username) # change selected slot to username
                     else:
-                        file.write(save[userNum])
+                        file.write(save[userNum]) # rest of the names remain
 
                 for statsNum in range(3):
-                    file.write(stat[statsNum])
+                    file.write(stat[statsNum]) # rest of the stats remain
                
 
 
             else:
                 #fuel gold stage
-
-                
-
                 statList = stat[saveNum-1].split(' ')
                 fuel = int(statList[0])
                 score = int(statList[1])
@@ -129,7 +130,7 @@ while exitGame > 1:
                 stage -= 1
 
 
-    file.close()
+    file.close() 
 
     while exit > 1:
         stage +=1
@@ -246,7 +247,6 @@ while exitGame > 1:
 
 
 
-
             l = list(move)
             fuel -=5
             if fBonus == 1:
@@ -281,9 +281,6 @@ while exitGame > 1:
 
                 if move == 'w' or move =='s':
                     yaxis = grid.moveUD(xaxis,yaxis,array,move,gHeight,ship,guide)
-
-
-
                 elif move == 'a' or move == 'd':
                     xaxis = grid.moveLR(xaxis,yaxis,array,move,gLength,ship,guide)
 
@@ -292,14 +289,16 @@ while exitGame > 1:
                     yaxis = grid.moveUD(xaxis, yaxis, array, move, gHeight, ship,guide)
 
                 elif move == 'z':# q
-                    exitGame = 1
                     exit = 1
                     repeat = 2
                 elif move == 'x':# f remember to remove this
                     repeat = 2
                 elif move == 'c':# e
+
+                    stage = 0
+                    fuel = 200
+                    gold = 100
                     repeat = 2
-                    exit = 1
                 else:
                     tempList = int(l[i])
                     if tempList > 0:

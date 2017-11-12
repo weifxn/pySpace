@@ -106,7 +106,7 @@ def checkFuel(fuel,xaxis,yaxis,move,halfLength,stage,tut):
         os.system('cls' if os.name == 'nt' else 'clear')
 
         print('\n\n\n\n\n\n Out of fuel\n\n You wander in deep space of stage',stage,
-                       '\n\n\n\n\n\n c - try again\n z - quit ')
+                       '\n\n\n\n\n\n c - try again ')
         choice = input(' Select: ')
         move = choice
     return move
