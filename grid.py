@@ -31,40 +31,38 @@ def showGrid(a,h,l):
         print(s[i])
 
 def moveUD(x,v,a,move,height,ship,g):
-    if move == 'w' or move == 'q' or move == 'e':
-        if v - 1 < 0:
-            k = v
+    if move == 'w' or move == 'q' or move == 'e': 
+        if v - 1 < 0: # to check bottom border
+            k = v # v is yaxis
         else:
-
             a[v][x] = g
-            a[v-1][x] = ship
+            a[v-1][x] = ship # to move up
             k = v-1
-    elif move == 's':
-        if v + 2 > height:
+    elif move == 's': 
+        if v + 2 > height: # to check top border
             k = v
         else:
             a[v][x] = g
-            a[v + 1][x] = ship
+            a[v + 1][x] = ship # to move down
             k = v + 1
-    return k
+    return k # return yaxis
 
 def moveLR(x,v,a,move,length,ship,g):
     if move == 'a' or move == 'q':
-        if x - 2 < 0:
-            k = x
+        if x - 2 < 0: # to check left border
+            k = x # x is xaxis
         else:
             a[v][x] = g
-            a[v][x-2] = ship
+            a[v][x-2] = ship # to move left
             k = x-2
     elif move == 'd' or move == 'e':
-        if x + 2 > length:
+        if x + 2 > length: # to check right border
             k = x
         else:
             a[v][x] = g
-            a[v][x+2] = ship
+            a[v][x+2] = ship # to move right
             k = x+2
-
-    return k
+    return k # return xaxis
 
 def checkGrid(l1,l2,v,z,score,npc,len,fuel):
     for i in range(npc):

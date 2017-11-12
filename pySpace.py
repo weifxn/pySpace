@@ -75,21 +75,13 @@ while exitGame > 1:
         while leaveSave > 1:
             file = open('save.txt','r+')
             for snum in range(3):
-                save[snum] = file.readline()
+                save[snum] = file.readline() # load save names
 
             for jump in range(3):
-                stat[jump] = file.readline()
+                stat[jump] = file.readline() # load save datas
             leaveSave = 1
             saveNum = int(input(' [Saves] \n\n Choose an empty save to start a new game: \n 1. {save1}\n 2. {save2}\n 3. {save3}\n (type 4 to delete save): '.format(save1=save[0],save2=save[1],save3=save[2])))
-            if saveNum > 3:
-                file.close()
-
-                file = open('save.txt','r+')
-                for snum in range(3):
-                    save[snum] = file.readline()
-
-                for jump in range(3):
-                    stat[jump] = file.readline()
+            if saveNum > 3: # user choose to delete saves
                 delSave = int(input(' Select a save to delete: '))
                 file.seek(0)
                 file.truncate()

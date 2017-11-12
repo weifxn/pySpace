@@ -1,6 +1,6 @@
-wf
-Samir
 Empty
-916 85 7
+Empty
+Empty
+200 100 0
 200 100 0
 200 100 0
