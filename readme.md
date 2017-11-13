@@ -4,7 +4,7 @@
 
 You need to download [Python 3.6](https://www.python.org/downloads/) to run this game.
 
---
+---
 
 ### Instructions
 
