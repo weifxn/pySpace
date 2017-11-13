@@ -1,12 +1,30 @@
 # pySpace
 **pySpace** is a simple python grid game.
-
-
-You can [download it here](https://github.com/weifan23/pySpace/archive/master.zip). 
+ 
 
 You need to download [Python 3.6](https://www.python.org/downloads/) to run this game.
 
+--
+
+### Instructions
+
+1. [Download it here](https://github.com/weifan23/pySpace/archive/master.zip) and unzip.
+
+2. Open terminal or command prompt.
+
+3. Type 'cd' and drop the folder in command prompt or terminal.
+
 	
+
+Windows
+
+	$ cd /Users/[username]/Downloads/pySpace-master
+	$ C:\Python36\python.exe pySpace.py
+
+
+Mac
+	
+	$ cd /Users/[username]/Downloads/pySpace-master
 	$ python3 pySpace.py
 
 
